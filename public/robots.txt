@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.globenet.dev/sitemap.xml
+Host: https://www.globenet.dev
