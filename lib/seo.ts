@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-const SITE_URL = 'https://www.globenet.dev'
+/** Live site URL — use apex domain (www must be added in Spaceship + Vercel to use www) */
+const SITE_URL = 'https://globenet.dev'
 
 export const siteConfig = {
   name: 'Globenet',
@@ -9,7 +10,7 @@ export const siteConfig = {
   phone: '+234 810 821 7791',
   phoneRaw: '+2348108217791',
   email: 'help@globenet.dev',
-  website: 'www.globenet.dev',
+  website: 'globenet.dev',
   instagram: '@globnet.dev',
   instagramUrl: 'https://www.instagram.com/globnet.dev',
   googleReviewsUrl: 'https://share.google/01JsYvUpuQrUE8Txj',

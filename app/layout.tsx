@@ -4,7 +4,7 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { WhatsAppFAB } from '@/components/WhatsAppFAB'
 import { RootStructuredData } from '@/components/JsonLd'
-import { pageMetadata } from '@/lib/seo'
+import { pageMetadata, siteConfig } from '@/lib/seo'
 import './globals.css'
 
 const raleway = Raleway({
@@ -16,7 +16,7 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   ...pageMetadata.home,
-  metadataBase: new URL('https://www.globenet.dev'),
+  metadataBase: new URL(siteConfig.url),
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },

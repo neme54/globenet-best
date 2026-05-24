@@ -1,12 +1,14 @@
 import type { MetadataRoute } from 'next'
+import { siteConfig } from '@/lib/seo'
 
 export default function robots(): MetadataRoute.Robots {
+  const base = siteConfig.url.replace(/\/$/, '')
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://www.globenet.dev/sitemap.xml',
-    host: 'https://www.globenet.dev',
+    sitemap: `${base}/sitemap.xml`,
+    host: base,
   }
 }

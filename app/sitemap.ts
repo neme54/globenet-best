@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
-
-const SITE_URL = 'https://www.globenet.dev'
+import { siteConfig } from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const SITE_URL = siteConfig.url
   const lastModified = new Date()
   const routes = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
