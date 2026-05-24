@@ -5,7 +5,7 @@ import { BrowserMockup } from './BrowserMockup'
 import { featuredHomeProjects } from '@/lib/projects'
 
 const trustfund = featuredHomeProjects.find((p) => p.id === 'trustfund')
-const globedispatch = featuredHomeProjects.find((p) => p.id === 'globedispatch')
+const savannah = featuredHomeProjects.find((p) => p.id === 'savannah-grill')
 
 export function HeroVisual() {
   return (
@@ -25,23 +25,22 @@ export function HeroVisual() {
           />
         </motion.div>
       )}
-      {globedispatch && (
+      {savannah && (
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
           className="absolute -bottom-6 -left-4 hidden w-[55%] rotate-[-4deg] shadow-xl sm:block lg:-left-8"
         >
           <BrowserMockup
-            url={globedispatch.url}
-            domain="globedispatch.org"
-            imageSrc={globedispatch.thumbnail}
-            imageAlt="Globe Dispatch — logistics website by Globenet"
+            domain={savannah.displayDomain ?? 'savannahgrill.ng'}
+            imageSrc={savannah.thumbnail}
+            imageAlt="Savannah Grill — restaurant website concept by Globenet"
           />
         </motion.div>
       )}
       <div className="absolute -right-2 top-8 hidden rounded-xl border border-brand-border bg-brand-surface px-4 py-3 shadow-lg lg:block">
         <p className="text-xs font-semibold uppercase tracking-wider text-brand-muted">Client projects</p>
-        <p className="text-sm font-bold text-primary">International clients</p>
+        <p className="text-sm font-bold text-primary">International & local brands</p>
       </div>
     </div>
   )

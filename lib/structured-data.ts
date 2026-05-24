@@ -17,7 +17,7 @@ export function localBusinessJsonLd() {
     telephone: siteConfig.phoneRaw,
     email: siteConfig.email,
     image: `${SITE_URL}/logo.png`,
-    logo: `${SITE_URL}/icon-mark.png`,
+    logo: `${SITE_URL}/favicon.png`,
     priceRange: '₦₦',
     address: {
       '@type': 'PostalAddress',

@@ -10,7 +10,8 @@ export function FeaturedProjectsHome() {
 
   if (!featured) return null
 
-  const featuredDomain = featured.url?.replace(/^https?:\/\//, '').replace(/\/$/, '')
+  const featuredDomain =
+    featured.url?.replace(/^https?:\/\//, '').replace(/\/$/, '') ?? featured.displayDomain
 
   return (
     <div className="space-y-8">
@@ -27,22 +28,29 @@ export function FeaturedProjectsHome() {
           />
         </div>
         <div className="flex flex-col justify-center p-6 lg:p-10">
-          <span className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-logo/30 bg-logo/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-logo" />
-            Featured build
+          <span className="mb-3 inline-flex w-fit flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full border border-logo/30 bg-logo/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+              <span className="h-1.5 w-1.5 rounded-full bg-logo" />
+              Featured build
+            </span>
+            {featured.concept && (
+              <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-800">
+                Concept
+              </span>
+            )}
           </span>
           <h3 className="text-2xl font-extrabold text-brand-text sm:text-3xl">{featured.name}</h3>
           <p className="mt-1 text-sm font-semibold text-logo">{featured.clientType}</p>
-          {featured.url && (
-            <a
-              href={featured.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1.5 text-sm text-brand-muted hover:text-primary"
-            >
-              <Globe className="h-4 w-4" />
+          {featuredDomain && (
+            <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-brand-muted">
+              <Globe className="h-4 w-4 shrink-0" />
               {featuredDomain}
-            </a>
+              {featured.concept && (
+                <span className="rounded-md bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-800">
+                  Concept
+                </span>
+              )}
+            </p>
           )}
           <p className="mt-4 leading-relaxed text-brand-muted">{featured.description}</p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -55,7 +63,7 @@ export function FeaturedProjectsHome() {
               </span>
             ))}
           </div>
-          {featured.url && !featured.url.includes('globenet.dev') ? (
+          {featured.url && !featured.concept ? (
             <a
               href={featured.url}
               target="_blank"
@@ -69,7 +77,8 @@ export function FeaturedProjectsHome() {
               href="/contact"
               className="mt-6 inline-flex items-center gap-2 font-bold text-primary"
             >
-              Start a similar project <ArrowRight className="h-4 w-4" />
+              {featured.concept ? 'Build my restaurant site' : 'Start a similar project'}{' '}
+              <ArrowRight className="h-4 w-4" />
             </Link>
           )}
         </div>
@@ -77,7 +86,8 @@ export function FeaturedProjectsHome() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {rest.map((project, i) => {
-          const domain = project.url?.replace(/^https?:\/\//, '').replace(/\/$/, '')
+          const domain =
+            project.url?.replace(/^https?:\/\//, '').replace(/\/$/, '') ?? project.displayDomain
           return (
             <article
               key={project.id}
@@ -97,8 +107,13 @@ export function FeaturedProjectsHome() {
               <div className="p-5 sm:p-6">
                 <h3 className="font-bold text-brand-text">{project.name}</h3>
                 <p className="mt-1 text-xs font-semibold text-logo">{project.clientType}</p>
+                {project.concept && (
+                  <span className="mt-2 inline-block rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-800">
+                    Concept build
+                  </span>
+                )}
                 <p className="mt-2 line-clamp-2 text-sm text-brand-muted">{project.description}</p>
-                {project.url && !project.url.includes('globenet.dev') ? (
+                {project.url && !project.concept ? (
                   <a
                     href={project.url}
                     target="_blank"

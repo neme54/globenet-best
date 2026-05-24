@@ -14,7 +14,8 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, detailed = false }: ProjectCardProps) {
   const [expanded, setExpanded] = useState(detailed)
-  const domain = project.url?.replace(/^https?:\/\//, '').replace(/\/$/, '')
+  const domain =
+    project.url?.replace(/^https?:\/\//, '').replace(/\/$/, '') ?? project.displayDomain
 
   return (
     <motion.article
@@ -35,17 +36,26 @@ export function ProjectCard({ project, detailed = false }: ProjectCardProps) {
           </span>
         </div>
 
-        {project.url && (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-logo hover:text-primary"
-          >
+        {domain && (
+          <p className="mb-4 inline-flex flex-wrap items-center gap-2 text-sm font-medium text-logo">
             <Globe className="h-4 w-4 shrink-0" />
             {domain}
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
+            {project.concept ? (
+              <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-800">
+                Concept
+              </span>
+            ) : project.url ? (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-primary hover:text-primary-dark"
+                aria-label={`Visit ${domain}`}
+              >
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            ) : null}
+          </p>
         )}
 
         <p className="mb-4 text-brand-muted leading-relaxed">{project.description}</p>
@@ -106,7 +116,7 @@ export function ProjectCard({ project, detailed = false }: ProjectCardProps) {
           </div>
         )}
 
-        {project.url && !project.url.includes('globenet.dev/contact') ? (
+        {project.url && !project.concept ? (
           <a
             href={project.url}
             target="_blank"

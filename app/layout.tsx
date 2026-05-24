@@ -18,11 +18,8 @@ export const metadata: Metadata = {
   ...pageMetadata.home,
   metadataBase: new URL(siteConfig.url),
   icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/icon-mark.png', type: 'image/png', sizes: '32x32' },
-    ],
-    apple: '/icon-mark.png',
+    icon: [{ url: '/favicon.png', type: 'image/png', sizes: '32x32' }],
+    apple: '/favicon.png',
   },
   verification: {
     // Add when you have them: google: 'your-google-verification-code',
@@ -44,9 +41,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/icon-mark.png" type="image/png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/icon-mark.png" />
+        <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
       <body className="min-h-screen flex flex-col">
         <RootStructuredData />

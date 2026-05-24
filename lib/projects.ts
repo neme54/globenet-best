@@ -5,6 +5,10 @@ export type Project = {
   name: string
   clientType: string
   url?: string
+  /** Shown in browser mockups when there is no live URL */
+  displayDomain?: string
+  /** Portfolio concept — not a live client site */
+  concept?: boolean
   description: string
   howBuilt: string
   workDelivered: string[]
@@ -58,8 +62,9 @@ export const projects: Project[] = [
   {
     id: 'savannah-grill',
     name: 'Savannah Grill — Restaurant & Online Orders',
-    clientType: 'Food & Beverage',
-    url: 'https://www.globenet.dev/contact',
+    clientType: 'Food & Beverage · Concept',
+    displayDomain: 'savannahgrill.ng',
+    concept: true,
     description:
       'Full-service restaurant website concept for a modern dining brand — digital menu, table reservations, and WhatsApp ordering for local and delivery customers.',
     howBuilt:
