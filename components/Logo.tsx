@@ -51,7 +51,7 @@ export function Logo({
       aria-label="Globenet home"
     >
       <Image
-        src="/logo.png"
+        src="/favicon.png"
         alt="Globenet web development agency — Awka, Anambra, Nigeria"
         width={280}
         height={70}
