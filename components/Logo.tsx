@@ -26,7 +26,7 @@ export function Logo({
         aria-label="Globenet home"
       >
         <Image
-          src="/favicon.png"
+          src="/logo.png"
           alt=""
           width={48}
           height={48}
